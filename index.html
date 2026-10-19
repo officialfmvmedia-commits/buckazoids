@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>BUCKAZOIDS :: THE LEDGER BBS :: a love letter to 1991</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BUCKAZOIDS: an original 1991-style point-and-click adventure about a gold coin with a B struck through it. Unaffiliated fan homage.">
+<link rel="preload" href="assets/bzvga.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="bbs/shell.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+
+<header class="topbar">
+ <a class="brand" href="#top"><span class="bcoin">&#8383;</span>BUCKAZOIDS</a>
+ <nav class="topnav">
+  <a href="#lore">The Lore</a><a href="#timeline">Timeline</a><a href="#screens">Screenshots</a><a href="#order">Order Now</a><a href="#" onclick="navTop('bbs/guestbook.html');return false">Guestbook</a>
+ </nav>
+ <span class="new">NEW!</span>
+ <button class="topplay" onclick="openPlay()">&#9654; PLAY</button>
+</header>
+
+<div class="ticker" aria-label="lore ticker"><div class="tk" id="tk"></div></div>
+
+<main id="top">
+<section class="hero">
+ <aside class="rail left">
+  <div class="panel coinpanel">
+   <img id="realcoin" src="assets/coin.png" alt="the buckazoid: a gold coin with a rocket, a B and 59">
+   <div class="pxs gold">THE COIN OF</div>
+   <div class="pxs gold">FIFTY-NINE</div>
+   <div class="tiny">fig. 1: one (1) buckazoid,<br>enlarged to show texture</div>
+  </div>
+  <div class="panel sticker"><span class="new">NEW!</span><div class="pxs">NOW ON</div><div class="pxm cyan">3.5" DISK</div><div class="tiny">1.44 MB high density<br>(also: a web page)</div></div>
+  <div class="panel"><div class="pxs green">SYSOP SAYS:</div><div class="tiny">"press <b>P</b> to play. press nothing else. the modem is fragile."</div></div>
+  <a class="badge88 nsnow" href="#" onclick="return false" title="Best viewed in Netscape"><span>Netscape</span><b>NOW!</b></a>
+ </aside>
+
+ <div class="herocenter">
+  <div class="logo-wrap">
+   <h1 class="logo" aria-label="BUCKAZOIDS">BUCKAZOIDS</h1>
+   <div class="tagline">CHAPTER I: THE COIN OF FIFTY-NINE &nbsp;&#183;&nbsp; A LOVE LETTER TO 1991</div>
+  </div>
+<div id="desk">
+ <div class="win" id="nav">
+  <div class="tb"><span class="tbic"></span>Netscape - [THE LEDGER BBS :: node 0]<span class="tbb">_</span><span class="tbb">&#9633;</span><span class="tbb">x</span></div>
+  <div class="menubar"><u>F</u>ile <u>E</u>dit <u>V</u>iew <u>G</u>o <u>B</u>ookmarks <u>O</u>ptions <u>D</u>irectory <u>W</u>indow <span style="float:right"><u>H</u>elp</span></div>
+  <div class="toolbar">
+   <button onclick="frames.main.history.back()">&#9664;<br>Back</button><button onclick="frames.main.history.forward()">&#9654;<br>Forward</button><button onclick="nav('bbs/home.html')">&#8962;<br>Home</button><button onclick="frames.main.location.reload()">&#8635;<br>Reload</button><button disabled class="opt">&#9635;<br>Images</button><button onclick="openPlay()">&#9654;<br>Play</button><button disabled class="opt">&#9113;<br>Print</button><button disabled class="opt">&#128269;<br>Find</button><button onclick="stopIt()">&#9632;<br>Stop</button>
+   <div class="nlogo" id="nlogo"><canvas id="meteor" width="40" height="40"></canvas></div>
+  </div>
+  <div class="loc"><b>Location:</b> <input id="locbar" value="telnet://ledger.bbs:2009/node0/" readonly></div>
+  <div class="dirbtns"><button onclick="nav('bbs/new.html')">What's New?</button><button onclick="nav('bbs/cool.html')">What's Cool?</button><button onclick="nav('bbs/archive.html')">Handbook</button><button onclick="nav('bbs/sysop.html')">Net Search</button><button onclick="nav('bbs/guestbook.html')">Net Directory</button></div>
+  <div class="frames">
+   <div class="leftframe">
+<pre class="ansi"><span class="c1">+-----------------+</span>
+<span class="c1">|</span> <span class="c3">THE LEDGER BBS</span>  <span class="c1">|</span>
+<span class="c1">|</span> <span class="c2">node 0 :: 2400</span>  <span class="c1">|</span>
+<span class="c1">+-----------------+</span></pre>
+    <div class="menu">
+     <a href="#" onclick="openPlay();return false" class="mi"><span class="hk">[P]</span>LAY</a>
+     <a href="bbs/archive.html" target="main" class="mi"><span class="hk">[A]</span>RCHIVE</a>
+     <a href="bbs/readme.html" target="main" class="mi"><span class="hk">[R]</span>EADME.TXT</a>
+     <a href="bbs/sysop.html" target="main" class="mi"><span class="hk">[S]</span>YSOP</a>
+     <a href="bbs/guestbook.html" target="main" class="mi"><span class="hk">[G]</span>UESTBOOK</a>
+     <a href="bbs/home.html" target="main" class="mi"><span class="hk">[M]</span>AIN MENU</a>
+    </div>
+    <pre class="ansi small"><span class="c2">users online:</span> <span class="c3" id="online">1</span>
+<span class="c2">calls today:</span>  <span class="c3">59</span>
+<span class="c2">uptime:</span>  <span class="c3" id="uptime">6497d</span>
+<span class="c2">ratio:</span>   <span class="c3">1:21M</span></pre>
+    <div class="blink c4">&gt; press a hotkey_</div>
+   </div>
+   <iframe name="main" id="main" src="bbs/home.html" title="main frame"></iframe>
+  </div>
+  <div class="status"><span id="stat">Document: Done.</span><span class="key">&#128273;</span></div>
+ </div>
+</div>
+ </div>
+
+ <aside class="rail right">
+  <button class="demo" onclick="openPlay()"><span class="dl">&#11015;</span><span class="dtx">DOWNLOAD<br>THE DEMO</span><span class="dsub">B59.EXE &middot; 1,474,560 bytes</span></button>
+  <div class="panel"><span class="new">NEW!</span><div class="pxs gold">CHAPTER I</div><div class="tiny">5 rooms. 4 deaths. 1 coin.<br>~15 minutes if you're careful.<br>Less if you're not.</div></div>
+  <div class="panel mailp"><div class="mail" aria-hidden="true"><i></i></div><div class="tiny">you have <b class="cy">(1)</b> new message<br>from: <b>satoshi?</b> &nbsp;subj: <b>re: re: the coin</b></div></div>
+  <div class="panel"><div class="pxs">VISITORS</div><div class="counter" id="counter1"></div><div class="tiny">since 03 JAN 2009</div></div>
+ </aside>
+</section>
+
+<section id="lore" class="sec">
+ <h2 class="sech"><span>THE LORE</span></h2>
+ <div class="bigq">
+  <p>In 1991, the Bitcoin symbol appeared in a game called <span class="cy">Space Quest IV</span>.</p>
+  <p class="gold">Seventeen years before Bitcoin.</p>
+ </div>
+ <div class="lore-grid">
+  <article class="vga"><div class="vgat">01 &middot; THE CURRENCY</div><div class="ico">$</div>
+   <p class="px">Since the very first Space Quest in 1986, the galaxy ran on one currency.</p>
+   <p class="px gold">Buckazoids.</p>
+   <p class="tiny">The money of Sierra On-Line's Space Quest series. You earned them, you lost them, you mostly died holding them.</p></article>
+  <article class="vga"><div class="vgat">02 &middot; THE COIN</div><div class="ico gold">&#8383;</div>
+   <p class="px">1991. Space Quest IV. Look closely at the coin in your inventory.</p>
+   <p class="px gold">A gold B, struck through with vertical lines.</p>
+   <p class="tiny">Strikingly similar to the Bitcoin &#8383;. Drawn years before anyone needed the symbol.</p></article>
+  <article class="vga"><div class="vgat">03 &middot; THE NUMBER</div><div class="ico">59</div>
+   <p class="px">You started with 59 buckazoids.</p>
+   <p class="px gold">Nobody asked why.</p>
+   <p class="tiny">That's why there are 59 of everything on this BBS. Calls today: 59. Price of the game: 59.</p></article>
+  <article class="vga"><div class="vgat">04 &middot; THE PAPER</div><div class="ico">&para;</div>
+   <p class="px">October 31, 2008. A whitepaper, signed Satoshi Nakamoto.</p>
+   <p class="px gold">A coin, at last, with no bank behind it.</p>
+   <p class="tiny">"Bitcoin: A Peer-to-Peer Electronic Cash System." Seventeen years after the coin showed up in a game.</p></article>
+  <article class="vga"><div class="vgat">05 &middot; BLOCK 0</div><div class="ico">#0</div>
+   <p class="px">January 3, 2009. Block 0.</p>
+   <p class="px gold">The coin finally had a chain.</p>
+   <p class="tiny">Inside the genesis block, a newspaper headline from that morning. Its first 50 coins can never be spent.</p></article>
+  <article class="vga"><div class="vgat">06 &middot; THE REVIVAL</div><div class="ico">!</div>
+   <p class="px">March 27, 2025. A Reddit post: "BTC in a game from 1991?"</p>
+   <p class="px gold">The coin woke up.</p>
+   <p class="tiny">The community kept digging. The files live at <a href="https://projectb59.com/sierra/buckazoids/" target="_blank" rel="noopener">Project B59</a>.</p></article>
+ </div>
+ <div class="genesis">
+  <div class="gtag">EMBEDDED IN BLOCK 0 &middot; 03/JAN/2009</div>
+  <div class="ghead">"Chancellor on brink of second bailout for banks"</div>
+  <div class="gsub">headline, The Times, 3 January 2009 &mdash; written into the very first block forever</div>
+ </div>
+ <div class="vga wide coinc">
+  <div class="vgat">07 &middot; COINCIDENCE?</div>
+  <p class="px">Nobody has ever proven a link between Space Quest and Bitcoin. Most old fans say the B just stands for buckazoid.</p>
+  <p class="px gold">Maybe it does. Nobody can prove otherwise.</p>
+ </div>
+</section>
+
+<section id="timeline" class="sec">
+ <h2 class="sech"><span>TIMELINE</span></h2>
+ <ol class="tl">
+  <li><div class="yr">1986</div><div class="tc"><b>The first Space Quest.</b> The galaxy gets a currency: the buckazoid.</div></li>
+  <li><div class="yr">1991</div><div class="tc"><b>Space Quest IV.</b> A gold coin in your inventory. A B with vertical strokes through it. You start with 59.</div></li>
+  <li class="gap"><div class="yr">. . .</div><div class="tc dim">seventeen years of nothing at all.</div></li>
+  <li><div class="yr">31 OCT 2008</div><div class="tc"><b>The whitepaper.</b> Satoshi Nakamoto describes a peer-to-peer electronic cash system.</div></li>
+  <li><div class="yr">03 JAN 2009</div><div class="tc"><b>Block 0.</b> The genesis block is mined, carrying the Times headline about a second bailout for banks.</div></li>
+  <li><div class="yr">27 MAR 2025</div><div class="tc"><b>"BTC in a game from 1991?"</b> One Reddit post, and everyone looks at the coin again.</div></li>
+  <li class="now"><div class="yr">TODAY</div><div class="tc"><b>BUCKAZOIDS, Chapter I.</b> Rebuilt from memory, in the spirit of the original. You are on node 0. <a href="#" onclick="openPlay();return false">Play it &raquo;</a></div></li>
+ </ol>
+</section>
+
+<section id="screens" class="sec">
+ <h2 class="sech"><span>SCREENSHOTS</span></h2>
+ <div class="boxback">
+  <div class="stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="bbhead"><div class="px gold big">FEATURING</div><div class="tiny">actual screens from the actual game. no, really. it runs in this browser.</div></div>
+  <div class="shots">
+   <figure><img src="assets/g03-bay.png" alt="Cargo bay of the S.S. MEMPOOL"><figcaption>The cargo bay of the S.S. MEMPOOL. Something gold is in that crate.</figcaption></figure>
+   <figure><img src="assets/g06-hall.png" alt="Ship corridor"><figcaption>The crew has left. The airlock is right there.</figcaption></figure>
+   <figure><img src="assets/g07-lab.png" alt="Ship lab"><figcaption>Touch nothing. You will touch everything.</figcaption></figure>
+   <figure><img src="assets/g08-mall.png" alt="Floppy Planet software store"><figcaption>Floppy Planet, 1991. Exactly 59 buckazoids to your name.</figcaption></figure>
+   <figure><img src="assets/g09-genesis.png" alt="Block 0"><figcaption>Block 0. A golden cube, humming one patient note.</figcaption></figure>
+   <figure><img src="assets/g10-death.png" alt="A death screen"><figcaption>Death. Frequent, hideous, and very 1991.</figcaption></figure>
+  </div>
+  <ul class="feats">
+   <li>Glorious <b>16-color VGA</b>, hand-dithered</li>
+   <li>Point &amp; click <b>and</b> a type-in text parser</li>
+   <li><b>5 rooms</b>, <b>4 hideous deaths</b>, <b>1 coin</b></li>
+   <li>AdLib-style music, synthesized live</li>
+   <li>Save &amp; restore (F5 / F7). You'll need it.</li>
+   <li>Type <b>buckazoid</b>. Just try it.</li>
+  </ul>
+ </div>
+</section>
+
+<section id="order" class="sec">
+ <h2 class="sech"><span>ORDER NOW</span></h2>
+ <div class="ordergrid">
+  <div class="boxart">
+   <canvas id="boxart" width="160" height="200" aria-label="BUCKAZOIDS big box art"></canvas>
+   <canvas id="floppy" width="64" height="64" aria-label="3.5 inch floppy disk"></canvas>
+  </div>
+  <div class="coupon">
+   <div class="scis">&#9986; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+   <div class="px gold big">YES! RUSH ME BUCKAZOIDS!</div>
+   <table class="ord">
+    <tr><td><span class="cb on"></span> 3.5" high density (1.44 MB)</td><td class="pr">59 &#8383;</td></tr>
+    <tr><td><span class="cb"></span> 5.25" double density (sorry, out of stock)</td><td class="pr dim">--</td></tr>
+    <tr><td><span class="cb on"></span> Hint book (it's the README)</td><td class="pr">FREE</td></tr>
+    <tr><td>Shipping &amp; handling: instant (it's a web page)</td><td class="pr">0 &#8383;</td></tr>
+    <tr class="tot"><td>TOTAL</td><td class="pr">59 &#8383;</td></tr>
+   </table>
+   <p class="tiny">Allow 0-0 weeks for delivery. No modem required beyond the one you are already using. Coin not legal tender in any known galaxy.</p>
+   <button class="demo wide" onclick="openPlay()"><span class="dl">&#11015;</span><span class="dtx">DOWNLOAD THE DEMO</span><span class="dsub">it's the whole of Chapter I. free. 0 buckazoids.</span></button>
+  </div>
+  <div class="sysreq">
+   <div class="srt">SYSTEM REQUIREMENTS</div>
+   <ul>
+    <li>IBM PC/AT, Tandy or 100% compatible</li>
+    <li><b>386SX</b> or faster (286 "will run, slowly, probably")</li>
+    <li><b>640K RAM</b> (ought to be enough for anybody)</li>
+    <li><b>VGA</b> 256K, 16 colors</li>
+    <li><b>AdLib</b> / <b>Sound Blaster</b> / PC speaker</li>
+    <li>Mouse recommended. Keyboard required. Patience mandatory.</li>
+    <li>DOS 3.3 or higher</li>
+   </ul>
+   <div class="srn">ACTUAL REQUIREMENTS: any web browser made this century.</div>
+  </div>
+ </div>
+</section>
+
+<section class="sec bbsrow">
+ <div class="panel uc"><div class="ucbar"></div><div class="pxm">UNDER CONSTRUCTION</div><div class="tiny">Chapter II: THE HALVING is being dithered by hand. Check back every four years.</div><div class="ucbar"></div></div>
+ <div class="panel"><div class="pxs green">SIGN THE GUESTBOOK</div><div class="tiny">leave your handle. sysop reads them all. sysop has nothing else to do.</div><a class="btn9" href="#" onclick="navTop('bbs/guestbook.html');return false">open guestbook</a></div>
+ <div class="panel"><div class="pxs cyan">READ THE ARCHIVE</div><div class="tiny">the full lore file, sources, and the honest disclaimer.</div><a class="btn9" href="#" onclick="navTop('bbs/archive.html');return false">open archive</a></div>
+</section>
+</main>
+
+<footer class="foot">
+ <div class="webring">
+  <a href="#top">&laquo; prev</a><span class="wr">&#9733; THE 1991 COIN WEBRING &#9733; <span class="dim">site 59 of ??</span></span><a href="#lore">random</a><a href="#order">next &raquo;</a>
+ </div>
+ <div class="badges">
+  <span class="badge88 nsnow"><span>Netscape</span><b>NOW!</b></span>
+  <span class="badge88 b386"><span>made on a</span><b>386SX</b></span>
+  <span class="badge88 bvga"><b>VGA</b><span>16 colors</span></span>
+  <span class="badge88 badl"><span>AdLib</span><b>READY</b></span>
+  <span class="badge88 by2k"><span>Y2K</span><b>compliant?</b></span>
+  <span class="badge88 bmail"><span class="mail sm"><i></i></span><b>e-mail me</b></span>
+ </div>
+ <div class="hits"><span class="tiny">you are visitor number</span><div class="counter" id="counter2"></div></div>
+ <p class="tiny dim">Best viewed in Netscape Navigator 1.1 at 640x480 with 16 colors. This page uses FRAMES.</p>
+ <p class="tiny dim">BUCKAZOIDS is an original game rebuilt from memory in the spirit of 1991. Unaffiliated fan homage, not affiliated with or endorsed by Sierra On-Line or Activision. Space Quest is a trademark of its owner. No link between Space Quest and Bitcoin has ever been proven. Not financial advice.</p>
+</footer>
+
+<div id="dos" hidden>
+ <div class="doswin">
+  <div class="tb dostb"><span class="tbic dosic"></span>BUCKA.EXE - DOS BOX 0.59 (cycles=3000, frameskip 0)<span class="tbb" onclick="closePlay()" title="close">x</span><span class="tbb" onclick="fullPlay()" title="full screen">&#9633;</span></div>
+  <div class="dosscreen" id="dosscreen">
+   <pre id="boot"></pre>
+   <iframe id="gameframe" title="BUCKAZOIDS" allow="autoplay; fullscreen" hidden></iframe>
+  </div>
+  <div class="doshint">mouse + keyboard. type to use the parser. F5 save, F7 restore. <a href="game/index.html" target="_blank">open in its own window</a></div>
+ </div>
+</div>
+<div id="crt"></div>
+<script src="bbs/shell.js"></script>
+<script src="assets/space.js"></script>
+</body></html>

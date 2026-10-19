@@ -1,0 +1,51 @@
+@font-face{font-family:sys;src:local("Courier New")}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#008080;font-family:"MS Sans Serif","Microsoft Sans Serif",Tahoma,Arial,sans-serif;font-size:12px;overflow:hidden}
+body{background:#05070a radial-gradient(ellipse at center,#0c1a22 0%,#020304 75%)}
+#desk{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px}
+.win{width:min(900px,100%);height:min(680px,100%);background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:0 0 0 1px #000,0 0 60px rgba(80,200,255,.12);display:flex;flex-direction:column}
+.tb{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-weight:bold;padding:3px 4px;display:flex;align-items:center;gap:5px;user-select:none}
+.tbic{width:14px;height:14px;background:conic-gradient(#f0c000 0 25%,#c02020 0 50%,#2050d0 0 75%,#20a040 0);border:1px solid #000}
+.tbb{margin-left:auto;width:16px;height:14px;background:#c0c0c0;color:#000;border:1px solid;border-color:#fff #404040 #404040 #fff;font-size:10px;line-height:11px;text-align:center;cursor:pointer}
+.tbb+.tbb{margin-left:2px}
+.menubar{padding:2px 6px;border-bottom:1px solid #808080}
+.menubar u{text-decoration:underline}
+.toolbar{display:flex;gap:2px;padding:3px 4px;border-bottom:1px solid #808080;border-top:1px solid #fff;align-items:center}
+.toolbar button,.dirbtns button{font:inherit;background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;padding:1px 6px;min-width:52px;cursor:pointer;color:#000;line-height:1.15}
+.toolbar button:disabled{color:#808080;text-shadow:1px 1px #fff;cursor:default}
+.toolbar button:active,.dirbtns button:active{border-color:#404040 #fff #fff #404040}
+.nlogo{margin-left:auto;width:44px;height:44px;border:2px solid;border-color:#404040 #fff #fff #404040;background:#000}
+.nlogo canvas{display:block;image-rendering:pixelated;width:40px;height:40px}
+.loc{padding:4px 6px;display:flex;gap:6px;align-items:center}
+.loc input{flex:1;font-family:"Courier New",monospace;font-size:12px;border:2px solid;border-color:#404040 #fff #fff #404040;padding:2px 4px;background:#fff}
+.dirbtns{display:flex;gap:3px;padding:0 6px 4px;border-bottom:2px groove #fff}
+.dirbtns button{min-width:0;font-size:11px}
+.frames{flex:1;display:flex;min-height:0;border:2px solid;border-color:#404040 #fff #fff #404040;margin:4px}
+.leftframe{width:190px;background:#000;color:#a8a8a8;padding:8px 6px;border-right:6px ridge #a0a0a0;overflow:auto;font-family:"Courier New",monospace}
+.frames iframe{flex:1;border:0;background:#000;min-width:0}
+.ansi{margin:0 0 8px;font-family:"Courier New",monospace;font-size:12px;line-height:1.15}
+.ansi.small{font-size:11px;margin-top:14px}
+.c1{color:#5555ff}.c2{color:#55ffff}.c3{color:#ffff55}.c4{color:#55ff55}.c5{color:#ff55ff}
+.menu{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.mi{color:#aaa;text-decoration:none;font-weight:bold;padding:3px 4px;font-size:14px;letter-spacing:1px}
+.mi .hk{color:#ff55ff}
+.mi:hover,.mi.on{background:#0000aa;color:#ffff55}
+.blink{animation:bl 1s steps(1) infinite;margin-top:12px;font-size:12px}
+@keyframes bl{50%{opacity:0}}
+.status{display:flex;justify-content:space-between;padding:2px 6px;border-top:1px solid #808080;font-size:11px}
+.status span:first-child{border:1px solid;border-color:#808080 #fff #fff #808080;padding:0 6px;flex:1;margin-right:6px}
+#crt{pointer-events:none;position:fixed;inset:0;z-index:99;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.55) 100%);animation:fl 6s infinite;mix-blend-mode:multiply}
+#crt::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 0,rgba(120,255,200,.035) 50%,transparent 100%);background-size:100% 220px;animation:roll 7s linear infinite}
+@keyframes fl{0%,100%{opacity:.9}48%{opacity:.85}50%{opacity:1}52%{opacity:.88}}
+@keyframes roll{from{background-position:0 -220px}to{background-position:0 100vh}}
+#dos{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
+#dos[hidden]{display:none}
+.doswin{background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:0 0 0 1px #000,0 20px 80px #000}
+.dostb{background:linear-gradient(90deg,#000080,#1084d0)}
+.dosic{background:#000;border:1px solid #fff}
+.dostb .tbb:first-of-type{margin-left:auto}
+.dosscreen{width:640px;height:400px;background:#000;margin:4px;border:2px solid;border-color:#404040 #fff #fff #404040;position:relative;overflow:hidden}
+.dosscreen pre{margin:0;padding:6px 8px;color:#aaa;font:16px/18px "Courier New",monospace;white-space:pre-wrap}
+.dosscreen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.doshint{font-size:11px;padding:2px 6px 5px}
+@media (max-width:700px){.leftframe{width:140px}.dosscreen{width:320px;height:200px}}
