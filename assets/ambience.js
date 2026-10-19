@@ -51,16 +51,31 @@
   }
   function level() { return dos && !dos.hidden ? VOL * DUCK : VOL; }
   function ramp(v, tc) { if (!master) return; const t = ac.currentTime; master.gain.cancelScheduledValues(t); master.gain.setValueAtTime(master.gain.value, t); master.gain.setTargetAtTime(v, t, tc); }
+  let hint = null;
+  function showHint() { if (hint || !btn || !on) return; hint = document.createElement('span'); hint.className = 'sndhint'; hint.textContent = '\u266a click anywhere for sound'; btn.insertAdjacentElement('afterend', hint); }
+  function hideHint() { if (hint) { hint.remove(); hint = null; } }
+  function play() { if (!timer) { next = ac.currentTime + .1; timer = setInterval(schedule, 250); schedule(); } ramp(level(), 1.5); /* ~5s fade-in */ hideHint(); }
   function start() {
     if (!on) return;
     try { if (!ac) build(); } catch (e) { return; }
-    if (ac.state === 'suspended') ac.resume();
-    if (!timer) { next = ac.currentTime + .1; timer = setInterval(schedule, 250); schedule(); }
-    ramp(level(), 1.5); /* ~5s fade-in */
+    if (ac.state === 'running') { play(); return; }
+    const p = ac.resume(); const chk = () => { if (on && ac.state === 'running') play(); };
+    if (p && p.then) p.then(chk, () => {}); setTimeout(chk, 60);
   }
-  function stop() { if (!ac) return; ramp(0, .25); setTimeout(() => { if (!on) { clearInterval(timer); timer = null; ac.suspend(); } }, 1200); }
-  function gesture() { removeEventListener('pointerdown', gesture, true); removeEventListener('keydown', gesture, true); start(); }
-  if (on) { addEventListener('pointerdown', gesture, true); addEventListener('keydown', gesture, true); }
+  function stop() { if (!ac) return; ramp(0, .25); setTimeout(() => { if (!on) { clearInterval(timer); timer = null; ac.suspend(); } }, 1200); hideHint(); }
+  const EV = ['pointerdown', 'touchstart', 'keydown', 'click', 'wheel'];
+  const wins = new Set([window]);
+  function gesture() { wins.forEach(w => { try { EV.forEach(t => w.removeEventListener(t, gesture, true)); } catch (e) {} }); start(); }
+  /* same-origin frames (the BBS pane, the game) swallow clicks, so listen inside them too */
+  function hookFrame(f) { const h = () => { if (!on || (ac && ac.state === 'running')) return; try { const w = f.contentWindow; wins.add(w); EV.forEach(t => w.addEventListener(t, gesture, { capture: true, passive: true })); } catch (e) {} }; f.addEventListener('load', h); h(); }
+  if (on) {
+    EV.forEach(t => addEventListener(t, gesture, { capture: true, passive: true }));
+    document.querySelectorAll('iframe').forEach(hookFrame);
+    /* try right away; most browsers block this until a gesture, some allow it */
+    start();
+    setTimeout(() => { if (on && (!ac || ac.state !== 'running')) showHint(); }, 700);
+    if (ac) ac.addEventListener('statechange', () => { if (on && ac.state === 'running') { play(); } });
+  }
   if (btn) btn.addEventListener('click', e => { e.stopPropagation(); on = !on; localStorage.setItem(KEY, on ? 'on' : 'off'); label(); on ? start() : stop(); });
   /* duck while the DOS box is open */
   if (dos) new MutationObserver(() => { if (on && timer) ramp(level(), .6); }).observe(dos, { attributes: true, attributeFilter: ['hidden'] });
