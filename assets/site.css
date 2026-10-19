@@ -164,7 +164,7 @@ a{color:var(--cy)}
 .sysreq ul{margin:0;padding:10px 12px 6px 28px;font:12px/1.55 "MS Sans Serif",Tahoma,Arial,sans-serif}
 .srn{margin:0 10px 10px;padding:6px 8px;background:#ffffe0;border:1px solid #000;font:bold 11px/1.4 Tahoma,Arial,sans-serif;color:#aa0000}
 
-.bbsrow{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:22px;padding-top:40px}
+.bbsrow{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:22px;padding-top:40px}
 .uc{background:#111;border-color:#ffff00}
 .uc .pxm{color:#ffff55;margin:8px 0}
 .ucbar{height:14px;background:repeating-linear-gradient(45deg,#000 0 10px,#ffd800 10px 20px);margin:0 -12px;animation:ucm 1s linear infinite;background-size:28px 28px}
@@ -214,3 +214,9 @@ a{color:var(--cy)}
 #realcoin{display:block;width:150px;height:150px;margin:4px auto 10px;border-radius:50%;image-rendering:pixelated;filter:drop-shadow(0 0 14px rgba(255,170,40,.45));animation:bzflip 6s ease-in-out infinite}
 @keyframes bzflip{0%,100%{transform:rotateY(0) translateY(0)}25%{transform:rotateY(-18deg) translateY(-4px)}75%{transform:rotateY(18deg) translateY(-4px)}}
 @media (prefers-reduced-motion:reduce){#realcoin{animation:none}}
+
+/* X links */
+.topnav a.navx{background:#000;color:#fff;border-color:#888 #222 #222 #888}
+.topnav a.navx:hover{background:#0000aa;color:#ffff55}
+.bx{background:#000;color:#aaa;border-color:#fff}.bx b{color:#fff;font-size:9px}
+.pxs.gold{color:var(--gold)}
