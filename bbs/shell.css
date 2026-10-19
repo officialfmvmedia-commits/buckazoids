@@ -44,8 +44,10 @@ body{background:#05070a radial-gradient(ellipse at center,#0c1a22 0%,#020304 75%
 .dostb{background:linear-gradient(90deg,#000080,#1084d0)}
 .dosic{background:#000;border:1px solid #fff}
 .dostb .tbb:first-of-type{margin-left:auto}
-.dosscreen{width:640px;height:400px;background:#000;margin:4px;border:2px solid;border-color:#404040 #fff #fff #404040;position:relative;overflow:hidden}
+.dosscreen{width:min(80vw,calc((100vh - 90px) * 1.6));aspect-ratio:16/10;height:auto;background:#000;margin:4px;border:2px solid;border-color:#404040 #fff #fff #404040;position:relative;overflow:hidden}
 .dosscreen pre{margin:0;padding:6px 8px;color:#aaa;font:16px/18px "Courier New",monospace;white-space:pre-wrap}
 .dosscreen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.dosscreen:fullscreen{width:100vw;height:100vh;margin:0;border:0;aspect-ratio:auto}
+.dosscreen:-webkit-full-screen{width:100vw;height:100vh;margin:0;border:0}
 .doshint{font-size:11px;padding:2px 6px 5px}
-@media (max-width:700px){.leftframe{width:140px}.dosscreen{width:320px;height:200px}}
+@media (max-width:700px){.leftframe{width:140px}.dosscreen{width:calc(100vw - 24px)}}

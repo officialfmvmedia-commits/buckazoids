@@ -24,6 +24,10 @@ a{color:var(--cy)}
 .topnav a:hover{background:#0000aa;color:#ffff55;border-color:#5555ff #000 #000 #5555ff}
 .topbar .new{margin-left:auto}
 .topplay{font-family:var(--px);font-size:20px;line-height:22px;padding:4px 14px 2px;background:#00aa00;color:#fff;border:2px solid;border-color:#55ff55 #004000 #004000 #55ff55;cursor:pointer;text-shadow:2px 2px 0 #004000}
+.topsnd{font-family:var(--px);font-size:20px;line-height:22px;padding:4px 10px 2px;background:#c0c0c0;color:#000;border:2px solid;border-color:#fff #404040 #404040 #fff;cursor:pointer;white-space:nowrap}
+.topsnd:hover{background:#0000aa;color:#ffff55;border-color:#5555ff #000 #000 #5555ff}
+.topsnd.off{color:#606060}
+.topsnd:active{border-color:#404040 #fff #fff #404040}
 .topplay:hover{background:#55ff55;color:#000;text-shadow:none}
 
 /* ticker */

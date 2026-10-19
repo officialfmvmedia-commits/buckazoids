@@ -2,8 +2,9 @@
 'use strict';
 const cv = document.getElementById('screen'), ctx = cv.getContext('2d');
 ctx.imageSmoothingEnabled = false;
-function fit() { const k = Math.max(1, Math.floor(Math.min(innerWidth / W, innerHeight / H))); cv.style.width = W * k + 'px'; cv.style.height = H * k + 'px'; }
-addEventListener('resize', fit); fit();
+function fit() { const vw = document.documentElement.clientWidth || innerWidth, vh = document.documentElement.clientHeight || innerHeight; if (!vw || !vh) return;
+  let k = Math.min(vw / W, vh / H); if (k >= 1 && k - Math.floor(k) < .08) k = Math.floor(k); k = Math.max(.5, k); cv.style.width = Math.floor(W * k) + 'px'; cv.style.height = Math.floor(H * k) + 'px'; }
+addEventListener('resize', fit); addEventListener('load', fit); if (window.ResizeObserver) new ResizeObserver(fit).observe(document.documentElement); fit();
 
 const MAXSCORE = 159, SAVEKEY = 'ledgerquest.save.v1';
 let S = null, mode = 'title', verb = 'walk', modal = null, busy = 0, tick = 0, barOpen = false;
