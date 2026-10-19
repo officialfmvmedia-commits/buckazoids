@@ -221,6 +221,4 @@ a{color:var(--cy)}
 .bx{background:#000;color:#aaa;border-color:#fff}.bx b{color:#fff;font-size:9px}
 .pxs.gold{color:var(--gold)}
 .topsnd{position:relative}
-.sndhint{font-family:var(--px);font-size:12px;line-height:14px;color:#ffff55;white-space:nowrap;animation:bl 1.2s steps(1) infinite;pointer-events:none}
-@media (max-width:700px){.sndhint{display:none}}
 .topplay,.topsnd{white-space:nowrap;flex-shrink:0}
