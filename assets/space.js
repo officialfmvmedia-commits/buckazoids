@@ -118,7 +118,7 @@ if (bc) { const x = bc.getContext('2d'); let t = 0; const draw = () => { x.clear
 /* ---------- ticker ---------- */
 const LINES = ['In 1991, the Bitcoin symbol appeared in a game called <b>Space Quest IV</b>. Seventeen years before Bitcoin.', 'You started with <b>59 buckazoids</b>. Nobody asked why.', '<i>Jan 3, 2009.</i> Block 0. The coin finally had a chain.',
   'Buckazoids: the currency of the Space Quest series since <b>1986</b>.', '<i>Oct 31, 2008.</i> A whitepaper, signed Satoshi Nakamoto.', '"Chancellor on brink of second bailout for banks"',
-  '<i>Mar 27, 2025.</i> "BTC in a game from 1991?"', 'Coincidence? <b>Nobody can prove otherwise.</b>', 'BUCKAZOIDS Chapter I: now playing on node 0', 'please do not feed the modem'];
+  '<i>Mar 27, 2025.</i> "BTC in a game from 1991?"', 'Coincidence? <b>Nobody can prove otherwise.</b>', 'BUCKAZOIDS Chapter I: now playing on node 0', 'please do not feed the modem', 'CA: <b>AY4k4zvqQBvjGjQiowqh8DFyBBt11kpheMRqumQppump</b>'];
 const tk = document.getElementById('tk'); if (tk) tk.innerHTML = LINES.map(s => s + ' &nbsp;<b>&#8383;</b>&nbsp; ').join('').repeat(2);
 
 /* ---------- hit counters ---------- */
